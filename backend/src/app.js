@@ -2,13 +2,6 @@ import express from 'express'
 import cors from 'cors'
 
 import conn from './config/conn.js'
-import {
-    Empresa, 
-    Usuario, 
-    Publicacao, 
-    Comentario, 
-    Curtida,
-} from "./models/index.js"
 
 import {
     empresaRouter, 
@@ -26,11 +19,12 @@ conn
     .sync()
     .then()
     .catch((error) => console.error(error))
-
-app.use("*", (req, res) => {
-    res.status(404).json({err: "Rota não encontrada"})
-})
-
-app.use("/api/empresas", empresaRouter)
-
+    
+    app.use("/api/empresas", empresaRouter)
+    app.use("/api/usuarios", usuarioRouter)
+    app.use("/api/publicacoes", publicacaoRouter)
+    
+    app.use("*", (req, res) => {
+        res.status(404).json({err: "Rota não encontrada"})
+    })
 export default app;

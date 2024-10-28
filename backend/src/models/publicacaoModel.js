@@ -3,9 +3,17 @@ import conn from '../config/conn.js'
 import Empresa from './empresaModel.js'
 
 const Publicacao = conn.define("publicacoes", {
-    nome: {
+    titulo: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    local: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    cidade: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     imagem: {
         type: DataTypes.STRING,
